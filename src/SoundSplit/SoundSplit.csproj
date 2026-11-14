@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net11.0-windows10.0.19041.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>SoundSplit</AssemblyName>
+    <RootNamespace>SoundSplit</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <Version>0.1.0</Version>
+    <Product>SoundSplit</Product>
+    <Description>Play the same sound on several speakers, in sync</Description>
+    <Copyright>SoundSplit. Uses NAudio (MIT).</Copyright>
+    <NoWarn>$(NoWarn);WPF0001</NoWarn>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <!-- WPF's DirectWriteForwarder can't load from a single-file bundle, so ship a normal folder. -->
+    <PublishSingleFile>false</PublishSingleFile>
+    <DebugType>embedded</DebugType>
+    <!-- Audio threads must not be paused by the garbage collector. -->
+    <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NAudio.Wasapi" Version="3.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SoundSplit.Core\SoundSplit.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\app.ico" />
+  </ItemGroup>
+
+</Project>
